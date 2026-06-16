@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surprise for Rehan ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: radial-gradient(circle, #0f172a, #1e1b4b);
+    overflow:hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Gift Box */
+.gift-box{
+    width:180px;
+    height:180px;
+    background:#ef4444;
+    position:relative;
+    cursor:pointer;
+    border-radius:12px;
+    box-shadow:0 0 25px rgba(255,0,0,0.5);
+    transition:0.6s;
+}
+
+.gift-box::before,
+.gift-box::after{
+    content:"";
+    position:absolute;
+    background:white;
+}
+
+.gift-box::before{
+    width:30px;
+    height:180px;
+    left:75px;
+}
+
+.gift-box::after{
+    width:180px;
+    height:30px;
+    top:75px;
+}
+
+.lid{
+    position:absolute;
+    width:200px;
+    height:40px;
+    background:#dc2626;
+    top:-20px;
+    left:-10px;
+    border-radius:10px;
+    transition:1s;
+}
+
+/* Open animation */
+.open .lid{
+    transform:translateY(-140px) rotate(-25deg);
+}
+
+.message{
+    position:absolute;
+    top:60%;
+    text-align:center;
+    color:white;
+    max-width:600px;
+    opacity:0;
+    transform:translateY(40px);
+    transition:1.2s;
+    padding:20px;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    font-size:24px;
+    animation:floatUp 4s linear forwards;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-600px); opacity:0;}
+}
+
+/* Sparkles */
+.sparkle{
+    position:absolute;
+    color:gold;
+    font-size:18px;
+    animation:spark 3s linear forwards;
+}
+
+@keyframes spark{
+    0%{opacity:1; transform:scale(1);}
+    100%{opacity:0; transform:translateY(-300px) scale(2);}
+}
+
+.click-text{
+    position:absolute;
+    bottom:40px;
+    color:white;
+    font-size:18px;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0.4;}
+}
+</style>
+</head>
+<body>
+
+<div class="gift-box" id="gift" onclick="openGift()">
+    <div class="lid"></div>
+</div>
+
+<div class="click-text" id="hint">🎁 Click to open surprise, Rehan</div>
+
+<div class="message" id="msg">
+    <h2>Dear Rehan ❤️</h2>
+    <p>
+        You are not just my brother,<br>
+        you are my strength, my happiness, and my biggest blessing.
+    </p>
+    <p>
+        Every moment with you is a memory I will always cherish.
+    </p>
+    <h3>I LOVE YOU BROTHER 💙</h3>
+    <p>— From your loving brother,<br><b>Mustakim Saudagar</b></p>
+</div>
+
+<script>
+function openGift(){
+
+    document.getElementById("gift").classList.add("open");
+    document.getElementById("msg").classList.add("show");
+    document.getElementById("hint").style.display="none";
+
+    // Hearts
+    for(let i=0;i<35;i++){
+        let heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML=Math.random()>0.5?"❤️":"💙";
+        heart.style.left=Math.random()*window.innerWidth+"px";
+        heart.style.top=(window.innerHeight-100)+"px";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),4000);
+    }
+
+    // Sparkles
+    for(let i=0;i<25;i++){
+        let sp=document.createElement("div");
+        sp.className="sparkle";
+        sp.innerHTML="✨";
+        sp.style.left=Math.random()*window.innerWidth+"px";
+        sp.style.top=Math.random()*window.innerHeight+"px";
+        document.body.appendChild(sp);
+
+        setTimeout(()=>sp.remove(),3000);
+    }
+}
+</script>
+
+</body>
+</html>
